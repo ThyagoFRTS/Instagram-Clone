@@ -13,14 +13,16 @@ import Comments from './Comments';
 
 type Props = {
     imageUrl: ImageSourcePropType;
+    email: string,
+    nickname: string,
     comments?: Array<CommentProps>| null; 
 }
 
-const Post: React.FC<Props> = ({imageUrl, comments}) => {
+const Post: React.FC<Props> = ({imageUrl, comments, email, nickname}) => {
 	return (
 		<View style={styles.container}>
 			<Image source={imageUrl} style={styles.image}/>
-            <Author email="kzkr.thyago@gmail.com" nickname='npx.msc'/>
+            <Author email={email} nickname={nickname}/>
             <Comments comments={comments}/>
             <AddComment/>
 		</View>

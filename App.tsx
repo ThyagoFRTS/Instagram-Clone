@@ -28,28 +28,27 @@ import {
 import Post from './src/components/Post';
 import Header from './src/components/Header';
 import { themes } from './src/global/themes';
+import { NavigationContainer } from '@react-navigation/native';
+import Background from './src/components/Background';
+import Routes from './src/routes/Routes';
+
 
 
 const App = () => {
     const isDarkMode = useColorScheme() === 'dark';
-    const comments = [
-        { nickname: "ana", comment: "legal fera"},
-        { nickname: "miau", comment: "ffffff"}
-    ]
+
 
 
     return (
-        <SafeAreaView style={{backgroundColor: themes.dark.background, flex: 1}}>
+
+        <SafeAreaView style={{ flex: 1 }}>
             <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-            <ScrollView
-                contentInsetAdjustmentBehavior="automatic"
-                >
-                <View style={{flex: 1}}>
-                    <Header />
-                    <Post imageUrl={require('./assets/imgs/fence.jpg')} comments={comments}/>
-                </View>
-            </ScrollView>
+            
+                <Routes/>
+            
+
         </SafeAreaView>
+
     );
 };
 

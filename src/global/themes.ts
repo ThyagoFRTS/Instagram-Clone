@@ -1,14 +1,24 @@
+import { DefaultTheme } from '@react-navigation/native';
 const themes = {
     dark: {
-        background: '#000',
-        primary: '#fff',
-        comment: '#ddd',
+        ...DefaultTheme,
+        colors: {
+            ...DefaultTheme.colors,
+            background: '#000',
+            primary: '#fff',
+            comment: '#ddd',
+          },
         statusBarContentColor: 'light-content',
     },
     light: {
-        background: '#fff',
-        line: '#000',
-        title: '#000',
+        ...DefaultTheme,
+        colors: {
+            ...DefaultTheme.colors,
+            primary: '#000',
+            comment: '#ddd',
+            background: '#fff',
+            line: '#000',
+          },
         statusBarContentColor: 'dark-content',
     }
 }

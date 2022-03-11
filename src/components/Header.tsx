@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
         marginTop: Platform.OS == 'ios' ? 10 : 0,
         padding: 10,
         borderBottomWidth: 1,
-        borderColor: themes.dark.primary,
+        borderColor: themes.dark.colors.primary,
         width: '100%'
     },
     rowContainer: {

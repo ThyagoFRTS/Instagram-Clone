@@ -4,6 +4,7 @@ import {
     FlatList,
     View,
     ImageSourcePropType,
+    ScrollView
 } from 'react-native'
 import Header from "../components/Header";
 import Post from "../components/Post";

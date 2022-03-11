@@ -44,7 +44,7 @@ const AddComment: React.FC = () => {
         commentArea = (
             <TWF onPress={() => setEditMode(true)}>
                 <View style={styles.container}>
-                    <Icon name='comment-o' size={25} color={themes.dark.primary} />
+                    <Icon name='comment-o' size={25} color={themes.dark.colors.primary} />
                     <Text style={styles.caption}>Add a comment</Text>
                 </View>
             </TWF>

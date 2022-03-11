@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
 		color: '#fff',
 	},
 	comment: {
-		color: themes.dark.comment,
+		color: themes.dark.colors.comment,
 		
 	},
 })

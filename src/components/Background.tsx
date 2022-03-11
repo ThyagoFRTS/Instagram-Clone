@@ -1,10 +1,10 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, ScrollView } from 'react-native';
 import { themes } from '../global/themes';
 
 // import { Container } from './styles';
 type Props = {
-    children: React.ReactNode
+    children: React.ReactNode;
 }
 
 
@@ -19,7 +19,7 @@ const Background: React.FC<Props> = ({children}) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: themes.dark.background,
+        backgroundColor: themes.dark.colors.background,
     }
 });
 

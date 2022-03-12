@@ -1,3 +1,3 @@
 export const fonts = {
-    main: 'shelter',
+    main: 'Billabong',
 }

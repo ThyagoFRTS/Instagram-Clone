@@ -25,6 +25,7 @@ const AddComment: React.FC = () => {
     }
 
     let commentArea = null;
+    
     if (editMode) {
         commentArea = (
             <View style={styles.container}>

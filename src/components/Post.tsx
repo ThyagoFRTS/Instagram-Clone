@@ -21,8 +21,8 @@ type Props = {
 const Post: React.FC<Props> = ({imageUrl, comments, email, nickname}) => {
 	return (
 		<View style={styles.container}>
-			<Image source={imageUrl} style={styles.image}/>
             <Author email={email} nickname={nickname}/>
+			<Image source={imageUrl} style={styles.image}/>
             <Comments comments={comments}/>
             <AddComment/>
 		</View>
@@ -35,8 +35,8 @@ const styles = StyleSheet.create({
 	},
 	image:{
 		width: Dimensions.get('window').width,
-		height: Dimensions.get('window').width * 3/4,
-		resizeMode: 'contain'
+		height: Dimensions.get('window').width,
+		resizeMode: 'cover',
 	}
 })
 

@@ -8,18 +8,32 @@ import {
 } from 'react-native'
 import { fonts } from '../global/fonts'
 import { themes } from '../global/themes'
+import OctIcon from 'react-native-vector-icons/Octicons'
+import MCIcon from 'react-native-vector-icons/MaterialCommunityIcons'
+import IonIcon from 'react-native-vector-icons/Ionicons'
 const icon = require('../../assets/imgs/icon.png')
+
 // import { Container } from './styles';
 
 const Header: React.FC = () => {
-	return (
-		<View style={styles.container}>
-			<View style={styles.rowContainer}>
-                <Image source={icon} style={styles.image} />
+    return (
+        <View style={styles.container}>
+            <View style={styles.rowContainer}>
                 <Text style={styles.title}>Instgram Clone</Text>
+                <View style={styles.iconContainer}>
+                    <OctIcon name='diff-added' size={24}
+                        color={themes.dark.colors.primary}
+                        style={styles.icon} />
+                    <IonIcon name='md-heart-outline' size={24}
+                        color={themes.dark.colors.primary}
+                        style={styles.icon} />
+                    <MCIcon name='facebook-messenger' size={24}
+                        color={themes.dark.colors.primary}
+                        style={styles.icon} />
+                </View>
             </View>
-		</View>
-	);
+        </View>
+    );
 }
 
 const styles = StyleSheet.create({
@@ -32,6 +46,7 @@ const styles = StyleSheet.create({
     },
     rowContainer: {
         flexDirection: 'row',
+        justifyContent: 'space-between',
         alignItems: 'center',
     },
     image: {
@@ -39,9 +54,14 @@ const styles = StyleSheet.create({
         width: 30,
         resizeMode: 'contain'
     },
+    iconContainer: {
+        flexDirection: 'row',
+    },
+    icon: {
+        marginHorizontal: 10,
+    },
     title: {
         color: '#fff',
-        
         fontFamily: fonts.main,
         height: 30,
         fontSize: 28

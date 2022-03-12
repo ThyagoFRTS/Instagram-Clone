@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { themes } from '../global/themes';
 import { Gravatar } from 'react-native-gravatar';
+import Icon from 'react-native-vector-icons/SimpleLineIcons'
 
 // import { Container } from './styles';
 type Props = {
@@ -12,11 +13,14 @@ type Props = {
 const Author: React.FC<Props> = ({ email, nickname }) => {
     return (
         <View style={styles.container}>
-            
-			<Gravatar options={{ email: email, secure: true }}
-				style={styles.avatar} />
-    
-            <Text style={styles.nickname}>{nickname}</Text>
+            <View style={styles.autor}>
+                <Gravatar options={{ email: email, secure: true }}
+                    style={styles.avatar} />
+                <Text style={styles.nickname}>{nickname}</Text>
+            </View>
+            <Icon name='options-vertical' size={15}
+                color={themes.dark.colors.primary}
+                style={styles.icon} />
         </View>
     )
 }
@@ -24,6 +28,7 @@ const Author: React.FC<Props> = ({ email, nickname }) => {
 const styles = StyleSheet.create({
     container: {
         flexDirection: 'row',
+        justifyContent: 'space-between',
         alignItems: 'center',
 
     },
@@ -31,13 +36,20 @@ const styles = StyleSheet.create({
         width: 30,
         height: 30,
         borderRadius: 15,
-        marginHorizontal: 10,
+        marginVertical: 8,
+        marginHorizontal: 8,
     },
     nickname: {
         color: themes.dark.colors.primary,
-        marginVertical: 10,
-        fontSize: 15,
+        fontSize: 14,
         fontWeight: 'bold',
+    },
+    autor: {
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+    icon: {
+        marginHorizontal: 10,
     },
 })
 

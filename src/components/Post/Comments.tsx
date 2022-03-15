@@ -1,8 +1,7 @@
 import React from 'react';
-import { View, StyleSheet, Text } from 'react-native';
-import { themes } from '../../global/themes';
-import { CommentProps } from '../../global/types';
 import Comment from './Comment';
+import { CommentProps } from '../../global/types';
+import { View, StyleSheet, Text } from 'react-native';
 
 // import { Container } from './styles';
 type Props = {

@@ -4,8 +4,8 @@
   <img src="./images_app/home.jpg" alt="void home" width="249" height="552" style="margin: 5px;">
 </div>
 
-<p>I'm trying to clone Instagram to learn a build social network apps flow</p>
-<p>This app dont contains all functionalities that original app, I simplified some characteristics</p>
+<p align="center">I'm trying to clone Instagram to learn a build social network apps flow</p>
+<p align="center">This app dont contains all functionalities that original app, I simplified some characteristics</p>
 <p align="center">
     <a href = ""><img src="https://img.shields.io/badge/Under%20Development-9966FF?&style=for-the-badge"></a>
 </p>

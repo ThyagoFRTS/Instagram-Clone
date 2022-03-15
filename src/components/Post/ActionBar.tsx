@@ -1,6 +1,6 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
 import { themes } from '../../global/themes';
+import { View, StyleSheet } from 'react-native';
 import IonIcon from 'react-native-vector-icons/Ionicons'
 import MaterialCIcon from 'react-native-vector-icons/MaterialCommunityIcons'
 // import { Container } from './styles';

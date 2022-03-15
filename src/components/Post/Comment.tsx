@@ -1,7 +1,7 @@
 import React, { Key } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
 import { themes } from '../../global/themes';
 import { CommentProps } from '../../global/types';
+import { View, Text, StyleSheet } from 'react-native';
 import IonIcon from 'react-native-vector-icons/Ionicons'
 
 // import { Container } from './styles';

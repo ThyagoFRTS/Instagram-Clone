@@ -8,6 +8,8 @@ const themes = {
             primary: '#fff',
             comment: '#ddd',
             overlay: 'rgba(0,0,0,0.7)',
+            button: '#0095f6',
+            input: 'rgb(54,54,54)',
           },
         statusBarContentColor: 'light-content',
     },

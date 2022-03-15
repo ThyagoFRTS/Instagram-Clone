@@ -1,8 +1,8 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
 import { themes } from '../../global/themes';
 import { Gravatar } from 'react-native-gravatar';
 import Icon from 'react-native-vector-icons/Ionicons'
+import { View, Text, StyleSheet } from 'react-native';
 
 // import { Container } from './styles';
 type Props = {

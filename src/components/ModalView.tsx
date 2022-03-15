@@ -37,7 +37,7 @@ const ModalView: React.FC<Props> = ({ children, closeModal, ...rest }) => {
 const styles = StyleSheet.create({
     smallContainer: {
         backgroundColor: themes.dark.colors.background,
-        justifyContent: "flex-end",
+        //justifyContent: "flex-end",
 
     },
     overlay: {

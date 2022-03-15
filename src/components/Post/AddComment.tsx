@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import {
     View,
     Text,
+    Alert,
     TextInput,
     StyleSheet,
     TouchableWithoutFeedback as TWF,
-    Alert,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome'
 import { themes } from '../../global/themes';
+import Icon from 'react-native-vector-icons/FontAwesome'
 
 // import { Container } from './styles';
 type Props = {

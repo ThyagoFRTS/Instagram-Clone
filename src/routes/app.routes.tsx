@@ -5,8 +5,12 @@ import { themes } from '../global/themes';
 import AddPhoto from '../screens/AddPhoto';
 import Icon from 'react-native-vector-icons/FontAwesome'
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Login from '../screens/Login';
 
 const BottonNavigation = createMaterialBottomTabNavigator();
+const Stack = createNativeStackNavigator();
+
 const { Navigator, Screen } = BottonNavigation;
 
 export const MainRoutes: React.FC = () => {
@@ -17,7 +21,7 @@ export const MainRoutes: React.FC = () => {
             <Screen
                 options={{ tabBarIcon: ({ color }) => <Icon name="home" color={color} size={26} /> }}
                 name="Feed" component={Feed} />
-            <Screen 
+            <Screen
                 options={{ tabBarIcon: ({ color }) => <Icon name="camera" color={color} size={26} /> }}
                 name="AddPhoto" component={AddPhoto} />
             <Screen
@@ -27,3 +31,11 @@ export const MainRoutes: React.FC = () => {
     );
 }
 
+export const AuthRoutes: React.FC = () => {
+    const options = { headerShown: false }
+    return (
+        <Stack.Navigator screenOptions={options}>
+            <Stack.Screen name="Login" component={Login} />
+        </Stack.Navigator>
+    );
+}

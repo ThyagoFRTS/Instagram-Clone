@@ -1,16 +1,16 @@
 import React from 'react';
 import {
 	View,
-	StyleSheet,
 	Image,
+	StyleSheet,
+	Dimensions,
 	ImageSourcePropType,
-	Dimensions
 } from 'react-native';
-import { CommentProps } from '../../global/types';
-import ActionBar from './ActionBar';
-import AddComment from './AddComment';
 import Author from './Author';
 import Comments from './Comments';
+import ActionBar from './ActionBar';
+import AddComment from './AddComment';
+import { CommentProps } from '../../global/types';
 
 type Props = {
     imageUrl: ImageSourcePropType;

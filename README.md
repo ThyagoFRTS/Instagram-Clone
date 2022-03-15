@@ -1,4 +1,4 @@
-# Match Manager APP
+# Instagram Clone
 
 <div align="center">
   <img src="./images_app/home.jpg" alt="void home" width="249" height="552" style="margin: 5px;">

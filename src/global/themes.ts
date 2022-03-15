@@ -7,6 +7,7 @@ const themes = {
             background: '#000',
             primary: '#fff',
             comment: '#ddd',
+            overlay: 'rgba(0,0,0,0.7)',
           },
         statusBarContentColor: 'light-content',
     },

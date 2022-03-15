@@ -1,8 +1,8 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import { themes } from '../global/themes';
+import { themes } from '../../global/themes';
 import { Gravatar } from 'react-native-gravatar';
-import Icon from 'react-native-vector-icons/SimpleLineIcons'
+import Icon from 'react-native-vector-icons/Ionicons'
 
 // import { Container } from './styles';
 type Props = {
@@ -18,7 +18,7 @@ const Author: React.FC<Props> = ({ email, nickname }) => {
                     style={styles.avatar} />
                 <Text style={styles.nickname}>{nickname}</Text>
             </View>
-            <Icon name='options-vertical' size={15}
+            <Icon name='ellipsis-vertical-sharp' size={15}
                 color={themes.dark.colors.primary}
                 style={styles.icon} />
         </View>

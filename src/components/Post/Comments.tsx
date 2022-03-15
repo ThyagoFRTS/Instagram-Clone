@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, StyleSheet, Text } from 'react-native';
-import { themes } from '../global/themes';
-import { CommentProps } from '../global/types';
+import { themes } from '../../global/themes';
+import { CommentProps } from '../../global/types';
 import Comment from './Comment';
 
 // import { Container } from './styles';
@@ -28,7 +28,7 @@ const Comments: React.FC<Props> = ({comments}) => {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		margin: 10,
+		marginHorizontal: 10,
 	},
 })
 

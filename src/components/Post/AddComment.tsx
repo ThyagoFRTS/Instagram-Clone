@@ -8,7 +8,7 @@ import {
     Alert,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome'
-import { themes } from '../global/themes';
+import { themes } from '../../global/themes';
 
 // import { Container } from './styles';
 type Props = {

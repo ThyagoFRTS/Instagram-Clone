@@ -6,8 +6,9 @@ import {
     ImageSourcePropType,
     ScrollView
 } from 'react-native'
-import Header from "../components/Header";
-import Post from "../components/Post";
+import Header from "../components/MainHeader";
+
+import Post from "../components/Post/Post";
 import { CommentProps } from "../global/types";
 
 
@@ -26,9 +27,9 @@ const Feed = () => {
         [
             {
                 id: Math.random(),
-                nickname: 'Rafael Pereira Filho',
+                nickname: 'npx.msc',
                 email: 'miawu@gmail.com',
-                imageUrl: require('../../assets/imgs/fence.jpg'),
+                imageUrl: require('../../assets/imgs/idk.jpg'),
                 comments: [
                     {
                         nickname: 'mas é claro',
@@ -39,9 +40,9 @@ const Feed = () => {
                     }]
             }, {
                 id: Math.random(),
-                nickname: 'Eu ashaushaus',
+                nickname: 'knsm',
                 email: 'sss@gmail.com',
-                imageUrl: require('../../assets/imgs/bw.jpg'),
+                imageUrl: require('../../assets/imgs/ed1.jpg'),
                 comments: [
                     {
                         nickname: 'tem gente que',
@@ -56,7 +57,7 @@ const Feed = () => {
     )
     return (
         <View style={styles.container}>
-            <Header />
+            <Header/>
             <FlatList
                 data={state}
                 keyExtractor={item => `${item.id}`}

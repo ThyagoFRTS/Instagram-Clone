@@ -6,7 +6,8 @@ import {
 	ImageSourcePropType,
 	Dimensions
 } from 'react-native';
-import { CommentProps } from '../global/types';
+import { CommentProps } from '../../global/types';
+import ActionBar from './ActionBar';
 import AddComment from './AddComment';
 import Author from './Author';
 import Comments from './Comments';
@@ -23,6 +24,7 @@ const Post: React.FC<Props> = ({imageUrl, comments, email, nickname}) => {
 		<View style={styles.container}>
             <Author email={email} nickname={nickname}/>
 			<Image source={imageUrl} style={styles.image}/>
+            <ActionBar/>
             <Comments comments={comments}/>
             <AddComment/>
 		</View>

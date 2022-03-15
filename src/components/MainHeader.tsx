@@ -8,10 +8,9 @@ import {
 } from 'react-native'
 import { fonts } from '../global/fonts'
 import { themes } from '../global/themes'
-import OctIcon from 'react-native-vector-icons/Octicons'
 import MCIcon from 'react-native-vector-icons/MaterialCommunityIcons'
 import IonIcon from 'react-native-vector-icons/Ionicons'
-const icon = require('../../assets/imgs/icon.png')
+import FAIcon from 'react-native-vector-icons/FontAwesome'
 
 // import { Container } from './styles';
 
@@ -21,7 +20,7 @@ const Header: React.FC = () => {
             <View style={styles.rowContainer}>
                 <Text style={styles.title}>Instgram Clone</Text>
                 <View style={styles.iconContainer}>
-                    <OctIcon name='diff-added' size={24}
+                    <FAIcon name='plus-square-o' size={24}
                         color={themes.dark.colors.primary}
                         style={styles.icon} />
                     <IonIcon name='md-heart-outline' size={24}
@@ -61,7 +60,7 @@ const styles = StyleSheet.create({
         marginHorizontal: 10,
     },
     title: {
-        color: '#fff',
+        color: themes.dark.colors.primary,
         fontFamily: fonts.main,
         height: 30,
         fontSize: 28

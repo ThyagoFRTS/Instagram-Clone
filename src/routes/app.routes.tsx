@@ -7,9 +7,11 @@ import Icon from 'react-native-vector-icons/FontAwesome'
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Login from '../screens/Login';
+import Signup from '../screens/Signup';
+import { RootStackParamList } from '../global/types';
 
 const BottonNavigation = createMaterialBottomTabNavigator();
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const { Navigator, Screen } = BottonNavigation;
 
@@ -36,6 +38,7 @@ export const AuthRoutes: React.FC = () => {
     return (
         <Stack.Navigator screenOptions={options}>
             <Stack.Screen name="Login" component={Login} />
+            <Stack.Screen name="Signup" component={Signup} />
         </Stack.Navigator>
     );
 }

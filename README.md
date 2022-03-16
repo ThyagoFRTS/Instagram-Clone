@@ -20,7 +20,6 @@
   <li>Typescript</li>
   <li>Axios</li>
   <li>Context API</li>
-  <li>OAuth2 Discord</li>
   <li>React Navigation</li>
   <li>Vector Icons</li>
   <li>Visual Studio</li>

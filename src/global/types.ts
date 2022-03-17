@@ -1,4 +1,4 @@
-import { UserState } from './../storage/ducks/users/types';
+import { UserState } from '../storage/ducks/user/types';
 export type CommentProps = {
     nickname: string,
     comment: string,

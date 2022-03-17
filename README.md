@@ -11,18 +11,20 @@
 </p>
 <h2>Funcionalitties</h2>
 <ul>
-  <li>Posts Scroll</li>
-  <li>Logout Fuction</li>
+  <li>Posts Scroll with static data</li>
 </ul>
 <h2>Technologies</h2>
 <ul>
   <li>React Native</li>
   <li>Typescript</li>
-  <li>Axios</li>
-  <li>Context API</li>
+  <li>Redux</li>
   <li>React Navigation</li>
   <li>Vector Icons</li>
   <li>Visual Studio</li>
+</ul>
+<h2>Patterns</h2>
+<ul>
+  <li>Ducks Pattern</li>
 </ul>
 <h2>How to use</h2>
 <ul>

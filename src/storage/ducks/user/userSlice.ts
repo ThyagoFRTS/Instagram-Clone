@@ -2,29 +2,37 @@ import { UserProps } from './../../../global/types';
 import { UserState } from './types';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
+/*
 const INITIAL_STATE: UserState = {
-    name: null,
-    email: null,
+    data: {
+        name: 'Thyago',
+        nickname: "npx.msc",
+        email: "kzkr.thyago@gmail.com",
+        description: `幸せ\nprintf("君の知らない物語");\nComputer Engineer\nGithub: ThyagoFRTS`
+    }
+
+}
+*/
+    
+const INITIAL_STATE: UserState = {
+    data: null
 }
 
 const userSlice = createSlice({
     name: 'user',
     initialState: INITIAL_STATE,
     reducers: {
-        login: (state, action: PayloadAction<UserProps>) => {
-            state.name = action.payload.name,
-                state.email = action.payload.email
-        },
-        reset: (state) => {
-            state = INITIAL_STATE;
+        login: (state, action: PayloadAction<UserState>) => {
+            state.data = action.payload.data
+            //state.email = action.payload.email
         },
         logout: (state) => {
-            state.email = INITIAL_STATE.email
-            state.name = INITIAL_STATE.name        
+            //state = INITIAL_STATE;
+            state.data = null
         }
     }
 
 })
 
-export const { login, logout, reset} = userSlice.actions;
+export const { login, logout } = userSlice.actions;
 export default userSlice.reducer

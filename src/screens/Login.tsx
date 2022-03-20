@@ -1,26 +1,30 @@
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import React, { useState } from 'react';
 import {
     Text,
     View,
     StyleSheet,
-    TextInput,
-    TouchableOpacity,
 } from 'react-native';
-import AuthButton from '../components/AuthButton';
 import Input from '../components/Input';
 import { fonts } from '../global/fonts';
 import { themes } from '../global/themes';
+import { useAppDispatch } from '../hooks/redux';
+import AuthButton from '../components/AuthButton';
 import { RootStackParamList } from '../global/types';
+import { login } from '../storage/ducks/user/userSlice'
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 // import { Container } from './styles';
-type Props = NativeStackScreenProps<RootStackParamList,'Signup'>
+type Props = NativeStackScreenProps<RootStackParamList, 'Signup'>
 
-const Login: React.FC<Props> = ( {navigation} ) => {
+const Login: React.FC<Props> = ({ navigation }) => {
     const [email, setEmail] = useState<string>('')
     const [password, setPassword] = useState<string>('')
-    
-    const login = () => { }
+    const name = 'temporario'
+    const dispatch = useAppDispatch();
+
+    const handleLogin = () => {
+        dispatch(login({data:{name: name,email: email}}))
+    }
     const handleSignup = () => {
         navigation.navigate('Signup');
     }
@@ -43,8 +47,8 @@ const Login: React.FC<Props> = ( {navigation} ) => {
                 //style={styles.input}
                 setValue={setPassword}
             />
-            <AuthButton label='Login' onPress={login}/>
-            <AuthButton label='Signup' onPress={handleSignup}/>
+            <AuthButton label='Login' onPress={handleLogin} />
+            <AuthButton label='Signup' onPress={handleSignup} />
         </View>
     );
 }

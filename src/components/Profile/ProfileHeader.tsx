@@ -11,7 +11,7 @@ import { themes } from '../../global/themes';
 
 // import { Container } from './styles';
 type Props = {
-    nickname: string,
+    nickname?: string | null,
     openModal: () => void,
 }
 const ProfileHeader: React.FC<Props> = ({nickname, openModal}) => {

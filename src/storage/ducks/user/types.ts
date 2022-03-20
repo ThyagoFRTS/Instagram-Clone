@@ -1,6 +1,12 @@
+interface User {
+    name: string,
+    email: string,
+    nickname?: string,
+    description?: string,
+}
+
 export interface UserState {
-    name: string | null,
-    email: string | null,
+    data: User | null,
 };
 
 

@@ -1,10 +1,8 @@
 import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
-import { connect } from 'react-redux';
 import { themes } from '../global/themes';
-import { ApplicationState } from '../global/types';
 import { UserState } from '../storage/ducks/user/types';
-import { useAppSelector } from '../storage/hooks';
+import { useAppSelector } from '../hooks/redux';
 import { MainRoutes, AuthRoutes } from './app.routes';
 
 interface StateProps {
@@ -14,20 +12,17 @@ interface StateProps {
 type Props = StateProps;
 
 const Routes: React.FC<Props> = (props) => {
-    const user = useAppSelector(state => state.user)
+    const user = useAppSelector(state => state.user.data)
     console.log(user)
     //const { user } = props;
     return (
         <NavigationContainer theme={themes.dark}>
-            {user.email? <MainRoutes/> : <AuthRoutes/>}
+            {user? <MainRoutes/> : <AuthRoutes/>}
         </NavigationContainer>
     );
 }
 
-const mapStateToProps = (state: ApplicationState) => ({
-    user: state.user,
-});
 
 
 
-export default connect(mapStateToProps)(Routes);
+export default Routes;

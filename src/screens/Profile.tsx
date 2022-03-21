@@ -20,13 +20,14 @@ import { logout } from '../storage/ducks/user/userSlice';
 const Profile: React.FC = () => {
     const [visible, setVisible] = useState<boolean>(false)
     const dispatch = useAppDispatch()
-    //const user = useAppSelector(state => state.user)
+    const user = useAppSelector(state => state.user.data)!
+    /*
     const user ={
         name: 'Thyago',
         nickname: "npx.msc",
         email: "kzkr.thyago@gmail.com",
         description: `幸せ\nprintf("君の知らない物語");\nComputer Engineer\nGithub: ThyagoFRTS`,
-    }
+    }*/
 
 
     const options = { email: user.email, secure: true }
@@ -42,9 +43,8 @@ const Profile: React.FC = () => {
             <UserResume
                 userName={user.name}
                 description={user.description} />
-            <Gravatar options={options} style={styles.avatar} />
-            <Text style={styles.nickname}>Fulano of tal</Text>
-            <Text style={styles.email}>eu@gmail.com</Text>
+            
+            
             <TouchableOpacity onPress={handleLogout} style={styles.button}>
                 <Text style={styles.buttonText}>Logout</Text>
             </TouchableOpacity>

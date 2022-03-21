@@ -8,9 +8,9 @@ import { createMaterialBottomTabNavigator } from '@react-navigation/material-bot
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Login from '../screens/Login';
 import Signup from '../screens/Signup';
-import { RootStackParamList } from '../global/types';
+import { RootBottomParamList, RootStackParamList } from '../global/types';
 
-const BottonNavigation = createMaterialBottomTabNavigator();
+const BottonNavigation = createMaterialBottomTabNavigator<RootBottomParamList>();
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const { Navigator, Screen } = BottonNavigation;
@@ -28,7 +28,7 @@ export const MainRoutes: React.FC = () => {
                 name="AddPhoto" component={AddPhoto} />
             <Screen
                 options={{ tabBarIcon: ({ color }) => <Icon name="user" color={color} size={26} /> }}
-                name="profile" component={Profile} />
+                name="Profile" component={Profile} />
         </Navigator>
     );
 }

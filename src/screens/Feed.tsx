@@ -10,6 +10,7 @@ import Header from "../components/MainHeader";
 
 import Post from "../components/Post/Post";
 import { CommentProps } from "../global/types";
+import { useAppSelector } from "../hooks/redux";
 
 
 // import { Container } from './styles';
@@ -22,44 +23,13 @@ type Props = {
 }
 
 const Feed = () => {
+    const posts = useAppSelector(state => state.posts.posts)
     
-    const [state, setState] = useState<Props[]>(
-        [
-            {
-                id: Math.random(),
-                nickname: 'npx.msc',
-                email: 'miawu@gmail.com',
-                imageUrl: require('../../assets/imgs/idk.jpg'),
-                comments: [
-                    {
-                        nickname: 'mas é claro',
-                        comment: "que o sol"
-                    }, {
-                        nickname: 'vai voltar amanha',
-                        comment: 'mais uma vez, eu sei'
-                    }]
-            }, {
-                id: Math.random(),
-                nickname: 'knsm',
-                email: 'sss@gmail.com',
-                imageUrl: require('../../assets/imgs/ed1.jpg'),
-                comments: [
-                    {
-                        nickname: 'tem gente que',
-                        comment: "está do mesmo lado que vc"
-                    }, {
-                        nickname: 'mas deveria estar do lado',
-                        comment: 'de la, tem gente que machuca os outros'
-                    }]
-            }
-
-        ]
-    )
     return (
         <View style={styles.container}>
             <Header/>
             <FlatList
-                data={state}
+                data={posts}
                 keyExtractor={item => `${item.id}`}
                 renderItem={({item}) => <Post key={item.id} {...item}/>}
             />

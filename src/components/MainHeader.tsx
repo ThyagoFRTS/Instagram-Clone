@@ -8,13 +8,19 @@ import {
 } from 'react-native'
 import { fonts } from '../global/fonts'
 import { themes } from '../global/themes'
-import MCIcon from 'react-native-vector-icons/MaterialCommunityIcons'
 import IonIcon from 'react-native-vector-icons/Ionicons'
+import { Gravatar } from 'react-native-gravatar'
 import FAIcon from 'react-native-vector-icons/FontAwesome'
+import MCIcon from 'react-native-vector-icons/MaterialCommunityIcons'
+import { useAppSelector } from '../hooks/redux'
 
 // import { Container } from './styles';
 
 const Header: React.FC = () => {
+    const userEmail = useAppSelector(state => state.user.data!.email)
+    
+    const options = { email: userEmail, secure: true }
+
     return (
         <View style={styles.container}>
             <View style={styles.rowContainer}>
@@ -29,6 +35,7 @@ const Header: React.FC = () => {
                     <MCIcon name='facebook-messenger' size={24}
                         color={themes.dark.colors.primary}
                         style={styles.icon} />
+                    <Gravatar email={userEmail} options={options} style={[styles.icon,styles.avatar]}/>
                 </View>
             </View>
         </View>
@@ -64,6 +71,11 @@ const styles = StyleSheet.create({
         fontFamily: fonts.main,
         height: 30,
         fontSize: 28
+    },
+    avatar: {
+        height: 24,
+        width: 24,
+        borderRadius: 12,
     }
 })
 

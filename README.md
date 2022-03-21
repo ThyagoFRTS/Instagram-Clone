@@ -1,7 +1,9 @@
 # Instagram Clone
 
 <div align="center">
+  <img src="./images_app/addPost.jpg" alt="void home" width="249" height="552" style="margin: 5px;">
   <img src="./images_app/home.jpg" alt="void home" width="249" height="552" style="margin: 5px;">
+  <img src="./images_app/profile.jpg" alt="void home" width="249" height="552" style="margin: 5px;">
 </div>
 
 <p align="center">I'm trying to clone Instagram to learn a build social network apps flow</p>
@@ -18,6 +20,7 @@
   <li>React Native</li>
   <li>Typescript</li>
   <li>Redux</li>
+  <li>Redux-toolkit</li>
   <li>React Navigation</li>
   <li>Vector Icons</li>
   <li>Visual Studio</li>

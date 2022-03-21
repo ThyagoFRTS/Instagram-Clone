@@ -8,7 +8,7 @@ import Input from '../components/Input';
 import { fonts } from '../global/fonts';
 import { themes } from '../global/themes';
 import { useAppDispatch } from '../hooks/redux';
-import AuthButton from '../components/AuthButton';
+import CustomButton from '../components/CustomButton';
 import { RootStackParamList } from '../global/types';
 import { login } from '../storage/ducks/user/userSlice'
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
@@ -47,8 +47,8 @@ const Login: React.FC<Props> = ({ navigation }) => {
                 //style={styles.input}
                 setValue={setPassword}
             />
-            <AuthButton label='Login' onPress={handleLogin} />
-            <AuthButton label='Signup' onPress={handleSignup} />
+            <CustomButton label='Login' onPress={handleLogin} />
+            <CustomButton label='Signup' onPress={handleSignup} />
         </View>
     );
 }

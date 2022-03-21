@@ -1,7 +1,7 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import React, {useState} from 'react';
 import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
-import AuthButton from '../components/AuthButton';
+import CustomButton from '../components/CustomButton';
 import Input from '../components/Input';
 import { fonts } from '../global/fonts';
 import { themes } from '../global/themes';
@@ -41,8 +41,8 @@ const Signup: React.FC<Props> = ({navigation}) => {
                 //style={styles.input}
                 setValue={setPassword}
             />
-            <AuthButton label='Save' onPress={save}/>
-            <AuthButton label='Cancel' onPress={() => {navigation.goBack()}}/>
+            <CustomButton label='Save' onPress={save}/>
+            <CustomButton label='Cancel' onPress={() => {navigation.goBack()}}/>
             
 
         </View>

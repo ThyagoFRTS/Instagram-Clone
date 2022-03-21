@@ -11,93 +11,49 @@ import {
     ScrollView,
     Alert,
     PermissionsAndroid,
-    ImageSourcePropType
 } from 'react-native';
-import { MediaType, Asset } from 'react-native-image-picker'
-import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
+import Input from '../components/Input';
 import { themes } from '../global/themes';
+import InputArea from '../components/InputArea';
+import CustomButton from '../components/CustomButton'
+import { MediaType } from 'react-native-image-picker'
+import { launchImageLibrary } from 'react-native-image-picker';
+import { useAppDispatch, useAppSelector } from '../hooks/redux';
+import { addPost } from '../storage/ducks/posts/postsSlicer'
+import { useNavigation } from '@react-navigation/native';
+import { MaterialBottomTabScreenProps } from '@react-navigation/material-bottom-tabs';
+import { RootBottomParamList } from '../global/types';
 // import { Container } from './styles';
 
-type Props = {
+type FeedRoute = MaterialBottomTabScreenProps<RootBottomParamList, 'Feed'>
+
+type Props = null | {
     uri: string,
-    base64: string,
+    base64?: string,
 }
 
-type ImageInfo = {
-    fileName: string;
-    fileSize: number;
-    height: number;
-    type: string;
-    uri: string;
-    width: number;
-    base64?: string;
-};
 
-const a = {
-    "assets": [
-        {
-            "fileName": "rn_image_picker_lib_temp_e3e29fd3-f85b-4b81-a7b8-56852d63f380.jpg",
-            "fileSize": 75754,
-            "height": 519,
-            "type": "image/jpeg",
-            "uri": "file:///data/user/0/com.instagramclone/cache/rn_image_picker_lib_temp_e3e29fd3-f85b-4b81-a7b8-56852d63f380.jpg",
-            "width": 736
-        }
-    ]
-}
-
-const AddPhoto: React.FC = () => {
+const AddPhoto: React.FC<FeedRoute> = ({navigation}) => {
     const [image, setImage] = useState<Props>({} as Props)
     const [comment, setComment] = useState<string>('')
-    
-    const requestCameraPermission = async () => {
-        try {
-            const granted = await PermissionsAndroid.request(
-                PermissionsAndroid.PERMISSIONS.CAMERA,
-                {
-                    title: "App Camera Permission",
-                    message: "App needs access to your camera ",
-                    buttonNeutral: "Ask Me Later",
-                    buttonNegative: "Cancel",
-                    buttonPositive: "OK"
-                }
-            );
-            if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-                console.log("Camera permission given");
-            } else {
-                console.log("Camera permission denied");
-            }
-        } catch (err) {
-            console.warn(err);
-        }
-    }
+    const user = useAppSelector(state => state.user.data)
+    const dispatch = useAppDispatch();
+
     const options = {
         mediaType: 'photo' as MediaType,
         maxWidth: 800,
         maxHeight: 600,
-        includeBase64: true,
-        //includeExtra: true
+        //includeBase64: true,
     }
 
-    const pickImage = async () => {
-        const result = await launchImageLibrary(options)
-        if (!result.didCancel) {
-            const assets = result.assets
-            const numItens = assets?.length
-            console.log(result.assets)
-
-        }
-
-    }
     const pick = () => {
-        launchImageLibrary(options, (response) => {
+        launchImageLibrary(options).then ((response) => {
             if (!response.didCancel) {
                 const data = response.assets
                 if (data) {
                     try {
                         const img = data[0]!
-
-                        setImage({ uri: img.uri!, base64: img.base64! })
+                        setImage({ uri: img.uri! })
                     } catch (error) {
                         Alert.alert("Failed to load", "Unable to load this picture")
                     }
@@ -106,8 +62,25 @@ const AddPhoto: React.FC = () => {
         })
     }
 
-    const save = async () => {
-        Alert.alert("Your picture", comment)
+    const save =  () => {
+        const post = {
+            id: Math.random(),
+            nickname: user!.nickname!,
+            email: user!.email,
+            imageUrl: image!,
+            comments: [
+                { nickname: user!.nickname!, comment: comment }
+            ]
+        }
+
+        dispatch(addPost(post))
+        console.log('passou')
+
+        console.log(post.imageUrl.uri)
+        setImage({} as Props)
+        setComment('')
+        navigation.navigate('Feed')
+
     }
 
 
@@ -115,21 +88,17 @@ const AddPhoto: React.FC = () => {
         <ScrollView>
             <View style={styles.container}>
                 <Text style={styles.title}>Share Image</Text>
+                <CustomButton label='Choose a picture' onPress={pick} />
                 <View style={styles.imageConatiner}>
-                    <Image source={image} style={styles.image} />
+                    <Image source={image!} style={styles.image} />
                 </View>
-                <TouchableOpacity onPress={pick} style={styles.button}>
-                    <Text style={styles.buttonText}>Choose a picture</Text>
-                </TouchableOpacity>
-                <TextInput
+                <InputArea
                     placeholder='Comment'
-                    style={styles.input}
                     value={comment}
-                    onChangeText={comment => setComment(comment)}
+                    setValue={setComment}
                 />
-                <TouchableOpacity onPress={save} style={styles.button}>
-                    <Text style={styles.buttonText}>Save</Text>
-                </TouchableOpacity>
+                <CustomButton label='Save' onPress={save} />
+
             </View>
 
         </ScrollView>
@@ -140,32 +109,24 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: "center",
-        justifyContent: "center"
+        justifyContent: 'center',
     },
     imageConatiner: {
         width: '90%',
-        height: Dimensions.get('window').width * 3/4,
-        backgroundColor: '#EEE',
-        marginTop: 10,
+        height: Dimensions.get('window').width * 3 / 4,
+        backgroundColor: '#111',
+        marginTop: 20,
+        borderRadius: 12,
     },
     title: {
         fontSize: 20,
         marginTop: Platform.OS === 'ios' ? 30 : 10,
-        fontWeight: 'bold', 
+        fontWeight: 'bold',
     },
     image: {
         width: '100%',
-        height: Dimensions.get('window').width * 3/4,
+        height: Dimensions.get('window').width * 3 / 4,
         resizeMode: 'center',
-    },
-    button: {
-        marginTop: 30,
-        padding: 10,
-        backgroundColor: '#4286f4'
-    },
-    buttonText: {
-        fontSize: 20,
-        color: themes.dark.colors.primary
     },
     input: {
         marginTop: 20,

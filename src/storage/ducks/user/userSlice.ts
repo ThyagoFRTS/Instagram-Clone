@@ -1,8 +1,6 @@
-import { UserProps } from './../../../global/types';
 import { UserState } from './types';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-/*
 const INITIAL_STATE: UserState = {
     data: {
         name: 'Thyago',
@@ -10,13 +8,14 @@ const INITIAL_STATE: UserState = {
         email: "kzkr.thyago@gmail.com",
         description: `幸せ\nprintf("君の知らない物語");\nComputer Engineer\nGithub: ThyagoFRTS`
     }
-
-}
-*/
     
+}
+/*
+
 const INITIAL_STATE: UserState = {
     data: null
 }
+*/
 
 const userSlice = createSlice({
     name: 'user',

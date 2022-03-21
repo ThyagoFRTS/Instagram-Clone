@@ -4,6 +4,12 @@ export type CommentProps = {
     comment: string,
 }
 
+export type RootBottomParamList = {
+    Feed: undefined,
+    AddPhoto: undefined,
+    Profile: undefined,
+}
+
 export type RootStackParamList = {
     Login: undefined,
     Signup: undefined,

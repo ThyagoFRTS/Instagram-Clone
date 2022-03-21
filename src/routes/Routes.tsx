@@ -13,7 +13,6 @@ type Props = StateProps;
 
 const Routes: React.FC<Props> = (props) => {
     const user = useAppSelector(state => state.user.data)
-    console.log(user)
     //const { user } = props;
     return (
         <NavigationContainer theme={themes.dark}>

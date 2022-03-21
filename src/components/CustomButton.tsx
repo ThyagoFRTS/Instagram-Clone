@@ -7,7 +7,7 @@ type Props = TouchableOpacityProps & {
     label: string,
 }
 
-const AuthButton: React.FC<Props> = ({ label, ...rest }) => {
+const Button: React.FC<Props> = ({ label, ...rest }) => {
     return (
         <TouchableOpacity {...rest} style={styles.button}>
             <Text style={styles.buttonText}>{label}</Text>
@@ -30,4 +30,4 @@ const styles = StyleSheet.create({
         color: themes.dark.colors.primary,
     }
 })
-export default AuthButton;
+export default Button;

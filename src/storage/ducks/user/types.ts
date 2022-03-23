@@ -5,6 +5,11 @@ interface User {
     description?: string,
 }
 
+export interface UserLoginState {
+    name: string,
+    email: string,
+}
+
 export interface UserState {
     data: User | null,
 };

@@ -13,20 +13,21 @@ import AddComment from './AddComment';
 import { CommentProps } from '../../global/types';
 
 type Props = {
+    id: number,
     imageUrl: ImageSourcePropType;
     email: string,
     nickname: string,
     comments?: Array<CommentProps>| null; 
 }
 
-const Post: React.FC<Props> = ({imageUrl, comments, email, nickname}) => {
+const Post: React.FC<Props> = ({imageUrl, comments, email, nickname, id}) => {
 	return (
 		<View style={styles.container}>
             <Author email={email} nickname={nickname}/>
 			<Image source={imageUrl} style={styles.image}/>
             <ActionBar/>
             <Comments comments={comments}/>
-            <AddComment/>
+            <AddComment itemId={id}/>
 		</View>
 	);
 }

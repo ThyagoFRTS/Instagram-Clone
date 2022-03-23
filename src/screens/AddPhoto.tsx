@@ -10,26 +10,23 @@ import {
     Platform,
     ScrollView,
     Alert,
+    ImageURISource,
     PermissionsAndroid,
 } from 'react-native';
-import Input from '../components/Input';
-import { themes } from '../global/themes';
 import InputArea from '../components/InputArea';
 import CustomButton from '../components/CustomButton'
 import { MediaType } from 'react-native-image-picker'
 import { launchImageLibrary } from 'react-native-image-picker';
 import { useAppDispatch, useAppSelector } from '../hooks/redux';
 import { addPost } from '../storage/ducks/posts/postsSlicer'
-import { useNavigation } from '@react-navigation/native';
 import { MaterialBottomTabScreenProps } from '@react-navigation/material-bottom-tabs';
 import { RootBottomParamList } from '../global/types';
 // import { Container } from './styles';
 
 type FeedRoute = MaterialBottomTabScreenProps<RootBottomParamList, 'Feed'>
 
-type Props = null | {
+type Props = {
     uri: string,
-    base64?: string,
 }
 
 
@@ -62,21 +59,17 @@ const AddPhoto: React.FC<FeedRoute> = ({navigation}) => {
         })
     }
 
-    const save =  () => {
+    const save = () => {
         const post = {
             id: Math.random(),
             nickname: user!.nickname!,
             email: user!.email,
             imageUrl: image!,
-            comments: [
-                { nickname: user!.nickname!, comment: comment }
-            ]
+            comments: comment? [{ nickname: user!.nickname!, comment: comment }] : []
+            
         }
 
         dispatch(addPost(post))
-        console.log('passou')
-
-        console.log(post.imageUrl.uri)
         setImage({} as Props)
         setComment('')
         navigation.navigate('Feed')

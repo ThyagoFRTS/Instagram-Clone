@@ -8,24 +8,28 @@ import {
     TouchableWithoutFeedback as TWF,
 } from 'react-native';
 import { themes } from '../../global/themes';
-import Icon from 'react-native-vector-icons/FontAwesome'
-
+import Icon from 'react-native-vector-icons/FontAwesome';
+import { addComment } from '../../storage/ducks/posts/postsSlicer';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 // import { Container } from './styles';
 type Props = {
-    comment: string,
-    editMode: boolean,
+    itemId: number,
 }
 
-const AddComment: React.FC = () => {
+const AddComment: React.FC<Props> = ({ itemId }) => {
     const [comment, setComment] = useState<string>('')
     const [editMode, setEditMode] = useState<boolean>(false)
+    const nickname = useAppSelector(state => state.user.data?.nickname!)
+    const dispatch = useAppDispatch()
 
     const handleAddComment = () => {
-        Alert.alert('adicionado', comment)
+        dispatch(addComment({itemId: itemId, comment: {nickname: nickname, comment: comment}}))
+        setComment('')
+        setEditMode(false)
     }
 
     let commentArea = null;
-    
+
     if (editMode) {
         commentArea = (
             <View style={styles.container}>
@@ -37,7 +41,7 @@ const AddComment: React.FC = () => {
                     onSubmitEditing={handleAddComment}
                     autoFocus />
                 <TWF onPress={() => setEditMode(false)}>
-                    <Icon name='times' size={15} color='#555' />
+                    <Icon name='times' size={15} color='#555' style={styles.icon}/>
                 </TWF>
             </View>
         )
@@ -53,7 +57,7 @@ const AddComment: React.FC = () => {
     }
 
     return (
-        <View style={{flex: 1}}>
+        <View style={{ flex: 1 }}>
             {commentArea}
         </View>
     );
@@ -65,15 +69,24 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         marginTop: 10,
+        
+        marginHorizontal: 10,
+
+
     },
     input: {
-        width: '90%'
+        width: '90%',
+        //backgroundColor: "#fff",
+        marginLeft: 10,
     },
     caption: {
         marginLeft: 10,
         fontSize: 12,
         color: '#ccc'
     },
+    icon: {
+        marginHorizontal: 8,
+    }
 })
 
 export default AddComment;

@@ -1,5 +1,5 @@
 import { AppThunk, AppDispatch } from './../../index';
-import { PostsState, PostState } from './types';
+import { PostsState, PostState, AddCommentState } from './types';
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 const INITIAL_STATE: PostsState = {
@@ -46,10 +46,22 @@ const postsSlice = createSlice({
     reducers: {
         addPost: (state, action: PayloadAction<PostState>) => {
             state.posts = state.posts.concat({...action.payload})    
+        },
+        addComment: (state, action: PayloadAction<AddCommentState>) => {
+            state.posts = state.posts.map(post => {
+                if (post.id === action.payload.itemId){
+                    if (post.comments){
+                        post.comments.push(action.payload.comment)
+                    } else {
+                        post.comments = [action.payload.comment]
+                    }
+                }
+                return post
+            })
         }
     },
 
 })
 
-export const { addPost } = postsSlice.actions;
+export const { addPost, addComment } = postsSlice.actions;
 export default postsSlice.reducer

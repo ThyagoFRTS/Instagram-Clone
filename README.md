@@ -14,6 +14,8 @@
 <h2>Funcionalitties</h2>
 <ul>
   <li>Posts Scroll with static data</li>
+  <li>Comment on Posts</li>
+  <li>Login and Logout</li>
 </ul>
 <h2>Technologies</h2>
 <ul>

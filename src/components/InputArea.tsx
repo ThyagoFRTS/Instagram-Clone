@@ -22,7 +22,7 @@ const TextArea: React.FC<Props> = ({ value, setValue, overStyle, ...rest }) => {
             maxLength={100}
             value={value? value: undefined}
             //placeholder='Email'
-            style={[styles.input, overStyle]}
+            style={styles.input}
             //keyboardType='email-address'
             onChangeText={value => setValue(value)}
         />

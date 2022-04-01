@@ -4,30 +4,39 @@ import Profile from '../screens/Profile';
 import { themes } from '../global/themes';
 import AddPhoto from '../screens/AddPhoto';
 import Icon from 'react-native-vector-icons/FontAwesome'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Login from '../screens/Login';
 import Signup from '../screens/Signup';
 import { RootBottomParamList, RootStackParamList } from '../global/types';
+import { switchColor } from '../utils/colors';
 
-const BottonNavigation = createMaterialBottomTabNavigator<RootBottomParamList>();
+const BottonNavigation = createBottomTabNavigator<RootBottomParamList>();
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const { Navigator, Screen } = BottonNavigation;
 
 export const MainRoutes: React.FC = () => {
+    const barOptions = {
+        tabBarShowLabel: false,
+        headerShown: false,
+        tabBarHideOnKeyboard: true,
+        tabBarStyle: { backgroundColor: themes.dark.colors.background }
+
+    }
     return (
-        <Navigator labeled={false} initialRouteName="Feed"
-            barStyle={{ backgroundColor: themes.dark.colors.background }}
+        <Navigator initialRouteName="Feed"
+            screenOptions={barOptions}
         >
             <Screen
-                options={{ tabBarIcon: ({ color }) => <Icon name="home" color={color} size={26} /> }}
+                options={{ tabBarIcon: ({ focused }) => <Icon name="home" color={switchColor(focused)} size={26} /> }}
                 name="Feed" component={Feed} />
             <Screen
-                options={{ tabBarIcon: ({ color }) => <Icon name="camera" color={color} size={26} /> }}
+                options={{ tabBarIcon: ({ focused }) => <Icon name="camera" color={switchColor(focused)} size={26} /> }}
                 name="AddPhoto" component={AddPhoto} />
             <Screen
-                options={{ tabBarIcon: ({ color }) => <Icon name="user" color={color} size={26} /> }}
+                options={{ tabBarIcon: ({ focused }) => <Icon name="user" color={switchColor(focused)} size={26} /> }}
                 name="Profile" component={Profile} />
         </Navigator>
     );

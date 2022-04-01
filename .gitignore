@@ -64,3 +64,5 @@ buck-out/
 android
 ios
 __tests__
+
+/src/services/firebase/db.ts

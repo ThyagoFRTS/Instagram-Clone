@@ -1,6 +1,7 @@
 import { AppThunk, AppDispatch } from './../../index';
 import { PostsState, PostState, AddCommentState } from './types';
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { api } from '../../../services/api';
 
 const INITIAL_STATE: PostsState = {
     posts: [
@@ -33,12 +34,11 @@ const INITIAL_STATE: PostsState = {
         }
     ] 
 }
-/*
 
-const INITIAL_STATE: UserState = {
-    data: null
+export const savePostOnDatabase = (post: PostState) => async (dispatch: AppDispatch) => {
+    const headers = { 'Content-type': 'application/json; charset=UTF-8' };
+    
 }
-*/
 
 const postsSlice = createSlice({
     name: 'posts',

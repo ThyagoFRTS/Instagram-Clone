@@ -4,7 +4,7 @@ import {
     StatusBar,
     useColorScheme,
 } from 'react-native';
-import 'react-native-gesture-handler';
+//import 'react-native-gesture-handler';
 import { Provider } from 'react-redux';
 import Routes from './src/routes/Routes';
 import store from './src/storage';

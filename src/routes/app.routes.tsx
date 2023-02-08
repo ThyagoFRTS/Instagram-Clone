@@ -5,7 +5,7 @@ import { themes } from '../global/themes';
 import AddPhoto from '../screens/AddPhoto';
 import Icon from 'react-native-vector-icons/FontAwesome'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
+//import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Login from '../screens/Login';
 import Signup from '../screens/Signup';

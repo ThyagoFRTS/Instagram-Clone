@@ -14,7 +14,7 @@ import { login } from '../storage/ducks/user/userSlice'
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 // import { Container } from './styles';
-type Props = NativeStackScreenProps<RootStackParamList, 'Signup'>
+type Props = NativeStackScreenProps<RootStackParamList, 'Login'>
 
 const Login: React.FC<Props> = ({ navigation }) => {
     const [email, setEmail] = useState<string>('')

@@ -8,7 +8,7 @@ import { themes } from '../global/themes';
 import { RootStackParamList } from '../global/types';
 
 // import { Container } from './styles';
-type Props = NativeStackScreenProps<RootStackParamList,'Login'>
+type Props = NativeStackScreenProps<RootStackParamList,'Signup'>
 
 const Signup: React.FC<Props> = ({navigation}) => {
     const [email, setEmail] = useState<string>('')

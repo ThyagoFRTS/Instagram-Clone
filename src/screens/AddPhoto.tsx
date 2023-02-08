@@ -10,20 +10,20 @@ import {
     Platform,
     ScrollView,
     Alert,
-    ImageURISource,
-    PermissionsAndroid,
 } from 'react-native';
 import InputArea from '../components/InputArea';
 import CustomButton from '../components/CustomButton'
 import { MediaType } from 'react-native-image-picker'
 import { launchImageLibrary } from 'react-native-image-picker';
 import { useAppDispatch, useAppSelector } from '../hooks/redux';
-import { addPost } from '../storage/ducks/posts/postsSlicer'
-import { MaterialBottomTabScreenProps } from '@react-navigation/material-bottom-tabs';
+import { addPost, savePostOnDatabase } from '../storage/ducks/posts/postsSlicer'
+//import { MaterialBottomTabScreenProps } from '@react-navigation/material-bottom-tabs';
+import { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
 import { RootBottomParamList } from '../global/types';
+import { useNavigation } from '@react-navigation/native';
 // import { Container } from './styles';
 
-type FeedRoute = MaterialBottomTabScreenProps<RootBottomParamList, 'Feed'>
+type FeedRoute = BottomTabScreenProps<RootBottomParamList, 'AddPhoto'>
 
 type Props = {
     uri: string,
@@ -35,6 +35,8 @@ const AddPhoto: React.FC<FeedRoute> = ({navigation}) => {
     const [comment, setComment] = useState<string>('')
     const user = useAppSelector(state => state.user.data)
     const dispatch = useAppDispatch();
+
+    const navig = useNavigation()
 
     const options = {
         mediaType: 'photo' as MediaType,
@@ -68,11 +70,12 @@ const AddPhoto: React.FC<FeedRoute> = ({navigation}) => {
             comments: comment? [{ nickname: user!.nickname!, comment: comment }] : []
             
         }
-
+        //savePostOnDatabase(post)
         dispatch(addPost(post))
         setImage({} as Props)
         setComment('')
         navigation.navigate('Feed')
+        //navig.navigate('Feed')
 
     }
 
@@ -83,7 +86,11 @@ const AddPhoto: React.FC<FeedRoute> = ({navigation}) => {
                 <Text style={styles.title}>Share Image</Text>
                 <CustomButton label='Choose a picture' onPress={pick} />
                 <View style={styles.imageConatiner}>
-                    <Image source={image!} style={styles.image} />
+                    {image.uri ?
+                        <Image source={image!} style={styles.image} />
+                        :
+                        <View style={styles.image}/>
+                    }
                 </View>
                 <InputArea
                     placeholder='Comment'

@@ -9,12 +9,13 @@ import {
 import { themes } from '../global/themes';
 
 type Props = ModalProps & {
-    children: ReactNode; 
+    children: ReactNode;
+    positionEnd?: boolean; 
     closeModal: () => void;
 }
 // import { Container } from './styles';
 
-const ModalView: React.FC<Props> = ({ children, closeModal, ...rest }) => {
+const ModalView: React.FC<Props> = ({ children,positionEnd=false, closeModal, ...rest }) => {
     return (
         <Modal
             transparent
@@ -22,11 +23,8 @@ const ModalView: React.FC<Props> = ({ children, closeModal, ...rest }) => {
             statusBarTranslucent
             {...rest}>
             <TouchableWithoutFeedback onPress={closeModal}>
-                <View style={styles.overlay} >
-                <View style={styles.bar}/>
-                    <View style={styles.smallContainer}>
-                        {children}
-                    </View>
+                <View style={[styles.overlay, positionEnd && {justifyContent: "flex-end"}]} >
+                    {children}
                 </View>
             </TouchableWithoutFeedback>
 
@@ -35,24 +33,11 @@ const ModalView: React.FC<Props> = ({ children, closeModal, ...rest }) => {
 }
 
 const styles = StyleSheet.create({
-    smallContainer: {
-        backgroundColor: themes.dark.colors.background,
-        //justifyContent: "flex-end",
-
-    },
     overlay: {
         flex: 1,
-        justifyContent: "flex-end",
+        justifyContent: "center",
         backgroundColor: themes.dark.colors.overlay,
     },
-    bar: {
-        width:  24,
-        height: 2,
-        borderRadius: 2,
-        backgroundColor: themes.dark.colors.primary,
-        alignSelf: "center",
-        
-    }
 });
 
 export default ModalView;

@@ -11,7 +11,7 @@ interface StateProps {
 
 type Props = StateProps;
 
-const Routes: React.FC<Props> = (props) => {
+const Routes: React.FC = () => {
     const user = useAppSelector(state => state.user.data)
     //const { user } = props;
     return (

@@ -1,0 +1,18 @@
+
+
+export const firebaseConfig = {
+    apiKey: "****************",
+    authDomain: "****************",
+    databaseURL: "****************",
+    projectId: "****************",
+    storageBucket: "****************",
+    messagingSenderId: "****************",
+    appId: "****************",
+    measurementId: "****************",
+    fileBucket: "****************", 
+};
+/* 
+    you can get the file bucket in firebase storage after to instance
+    your filestorage database. Usualy seems like with "gs://project_name.appspot.com".
+    Posteriorly these variables will be in dotenv file
+*/

@@ -66,3 +66,6 @@ yarn-error.log
 __tests__
 android
 ios
+
+# firebase config
+firebase.ts

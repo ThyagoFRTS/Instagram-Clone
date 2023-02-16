@@ -14,6 +14,7 @@ import ModalContent from '../components/Profile/ModalContent';
 import { useAppDispatch } from '../hooks/redux';
 import { useAppSelector } from '../hooks/redux';
 import { logout } from '../storage/ducks/user/userSlice';
+import LoadingModal from '../components/LoadingModal';
 
 // import { Container } from './styles';
 
@@ -37,6 +38,7 @@ const Profile: React.FC = () => {
     }
     const openModal = () => { setVisible(true) }
     const closeModal = () => { setVisible(false) }
+
     return (
         <View style={styles.container}>
             <ProfileHeader nickname={user.nickname} openModal={openModal} />
@@ -48,9 +50,10 @@ const Profile: React.FC = () => {
             <TouchableOpacity onPress={handleLogout} style={styles.button}>
                 <Text style={styles.buttonText}>Logout</Text>
             </TouchableOpacity>
-            <ModalView visible={visible} closeModal={closeModal}>
+            <ModalView visible={visible} positionEnd closeModal={closeModal}>
                 <ModalContent />
             </ModalView>
+
 
         </View>
     );

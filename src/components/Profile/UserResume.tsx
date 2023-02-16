@@ -19,7 +19,7 @@ type Props = {
 const screenWidth = Dimensions.get('window').width;
 
 const UserResume: React.FC<Props> = ({userName,description}) => {
-    const options = { email: 'eu@gmail.com', secure: true }
+    const options = { email: 'kzkr.thyago@gmail.com', secure: true }
     return (
         <View style={styles.container}>
             <View style={styles.userPit}>

@@ -7,6 +7,7 @@ import {
     ScrollView
 } from 'react-native'
 import Header from "../components/MainHeader";
+import ModalView from "../components/ModalView";
 
 import Post from "../components/Post/Post";
 import { CommentProps } from "../global/types";
@@ -33,6 +34,7 @@ const Feed = () => {
                 keyExtractor={item => `${item.id}`}
                 renderItem={({item}) => <Post key={item.id} {...item}/>}
             />
+            
         </View>
     );
 }

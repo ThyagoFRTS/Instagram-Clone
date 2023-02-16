@@ -1,5 +1,5 @@
 import { ApplicationState } from './../global/types';
-import { createStore, Store } from 'redux'
+//import { createStore, Store } from 'redux'
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import userReducer from './ducks/user/userSlice';
 import postsReducer from './ducks/posts/postsSlicer';

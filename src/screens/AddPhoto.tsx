@@ -16,43 +16,47 @@ import CustomButton from '../components/CustomButton'
 import { MediaType } from 'react-native-image-picker'
 import { launchImageLibrary } from 'react-native-image-picker';
 import { useAppDispatch, useAppSelector } from '../hooks/redux';
-import { addPost, savePostOnDatabase } from '../storage/ducks/posts/postsSlicer'
+import { addPost, savePost } from '../storage/ducks/posts/postsSlicer'
 //import { MaterialBottomTabScreenProps } from '@react-navigation/material-bottom-tabs';
 import { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
 import { RootBottomParamList } from '../global/types';
-import { useNavigation } from '@react-navigation/native';
+import { savePostOnDatabase, uploadImage } from '../services/firebase';
+import LoadingModal from '../components/LoadingModal';
 // import { Container } from './styles';
 
 type FeedRoute = BottomTabScreenProps<RootBottomParamList, 'AddPhoto'>
 
 type Props = {
     uri: string,
+    base64content?: string,
 }
 
 
-const AddPhoto: React.FC<FeedRoute> = ({navigation}) => {
+const AddPhoto: React.FC<FeedRoute> = ({ navigation }) => {
     const [image, setImage] = useState<Props>({} as Props)
     const [comment, setComment] = useState<string>('')
+    const [loading, setLoading] = useState<boolean>(false )
     const user = useAppSelector(state => state.user.data)
     const dispatch = useAppDispatch();
 
-    const navig = useNavigation()
+
 
     const options = {
         mediaType: 'photo' as MediaType,
         maxWidth: 800,
         maxHeight: 600,
         //includeBase64: true,
+        allowsEditing: true,
     }
 
     const pick = () => {
-        launchImageLibrary(options).then ((response) => {
+        launchImageLibrary(options).then((response) => {
             if (!response.didCancel) {
                 const data = response.assets
                 if (data) {
                     try {
                         const img = data[0]!
-                        setImage({ uri: img.uri! })
+                        setImage({ uri: img.uri!, base64content: img.base64 })
                     } catch (error) {
                         Alert.alert("Failed to load", "Unable to load this picture")
                     }
@@ -61,21 +65,24 @@ const AddPhoto: React.FC<FeedRoute> = ({navigation}) => {
         })
     }
 
-    const save = () => {
+    const save = async () => {
+        setLoading(true)
         const post = {
             id: Math.random(),
             nickname: user!.nickname!,
             email: user!.email,
-            imageUrl: image!,
-            comments: comment? [{ nickname: user!.nickname!, comment: comment }] : []
-            
+            imageUrl: image.uri,
+            comments: comment ? [{ nickname: user!.nickname!, comment: comment }] : []
+
         }
-        //savePostOnDatabase(post)
-        dispatch(addPost(post))
+        //let res = await savePostOnDatabase(post)
+        //let im = await uploadImage(image.uri).then(res => res)
+        //console.log(im)
+        await dispatch(savePost(post))
+        setLoading(false)
         setImage({} as Props)
         setComment('')
-        navigation.navigate('Feed')
-        //navig.navigate('Feed')
+        //navigation.navigate('Feed')
 
     }
 
@@ -89,7 +96,7 @@ const AddPhoto: React.FC<FeedRoute> = ({navigation}) => {
                     {image.uri ?
                         <Image source={image!} style={styles.image} />
                         :
-                        <View style={styles.image}/>
+                        <View style={styles.image} />
                     }
                 </View>
                 <InputArea
@@ -98,7 +105,7 @@ const AddPhoto: React.FC<FeedRoute> = ({navigation}) => {
                     setValue={setComment}
                 />
                 <CustomButton label='Save' onPress={save} />
-
+                <LoadingModal visible={loading} closeModal={()=> setLoading(false)}/>
             </View>
 
         </ScrollView>

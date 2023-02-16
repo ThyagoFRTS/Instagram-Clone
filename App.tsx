@@ -10,7 +10,6 @@ import Routes from './src/routes/Routes';
 import store from './src/storage';
 
 
-
 const App = () => {
     const isDarkMode = useColorScheme() === 'dark';
 

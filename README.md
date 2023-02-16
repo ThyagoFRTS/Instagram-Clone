@@ -11,32 +11,46 @@
 <p align="center">
     <a href = ""><img src="https://img.shields.io/badge/Under%20Development-9966FF?&style=for-the-badge"></a>
 </p>
-<h2>Funcionalitties</h2>
-<ul>
-  <li>Posts Scroll with static data</li>
-  <li>Comment on Posts</li>
-  <li>Login and Logout</li>
-</ul>
-<h2>Technologies</h2>
-<ul>
-  <li>React Native</li>
-  <li>Typescript</li>
-  <li>Redux</li>
-  <li>Redux-toolkit</li>
-  <li>React Navigation</li>
-  <li>Vector Icons</li>
-  <li>Visual Studio</li>
-</ul>
-<h2>Patterns</h2>
-<ul>
-  <li>Ducks Pattern</li>
-</ul>
-<h2>How to use</h2>
-<ul>
-  <li>Install Node and React Native</li>
-  <li>Download zip or git clone and</li>
-  <li>Use packet manager of your preference to install dependencies</li>
-  <li>Run 'npx react-native run-android' on local project</li>
-</ul>
-<h2>Credits</h2>
-<p>All images are illustrative and I used them for static app content only</p>
+
+## Funcionalitties
+
+- Posts Scroll with static data
+- Comment on Posts
+- Login and Logout
+
+## Technologies
+
+- React Native
+- Typescript
+- Redux-toolkit
+- Vector Icons
+
+## Patterns
+
+- Ducks Pattern
+
+## Instalation
+
+### Assets
+
+Maybe you need add some configurantions in android/app/build.gradle like add this line:
+```
+apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
+```
+After this, you need to link assets to android and ios plataforms, you can do this running this command:
+```
+npx react-native-asset
+```
+If your react native version is lower than 0.69, use link command
+```
+npx react-native link react-native-vector-icons
+```
+
+### Firebase
+
+You will need to create a firebase project with two databases: Firebase Realtime and Firebase Storage
+When you to create, you wil get one firebase json config that you wil paste in firebase.ts file (you will need to create them). See the firebase.ts file to get a example
+
+## Credits
+
+All images are illustrative and I used them for static app content only

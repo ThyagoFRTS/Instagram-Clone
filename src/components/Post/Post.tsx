@@ -14,7 +14,7 @@ import { CommentProps } from '../../global/types';
 
 type Props = {
     id: number,
-    imageUrl: ImageSourcePropType;
+    imageUrl: string;
     email: string,
     nickname: string,
     comments?: Array<CommentProps>| null; 
@@ -24,7 +24,7 @@ const Post: React.FC<Props> = ({imageUrl, comments, email, nickname, id}) => {
 	return (
 		<View style={styles.container}>
             <Author email={email} nickname={nickname}/>
-			<Image source={imageUrl} style={styles.image}/>
+			<Image source={{uri: imageUrl}} style={styles.image}/>
             <ActionBar/>
             <Comments comments={comments}/>
             <AddComment itemId={id}/>
